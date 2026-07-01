@@ -1,0 +1,12 @@
+{
+  "total_karvands": 2,
+  "total_skills": 2,
+  "average_skills": 93.0,
+  "cities": [
+    "tehran"
+  ],
+  "unique_skills": [
+    "java",
+    "sql"
+  ]
+}
