@@ -4,35 +4,35 @@
   "karvands": [
     {
       "id": 1,
-      "name": "test2",
-      "email": "test2@gmail.com",
+      "name": "ebrahim",
+      "email": "ebrahim@gmail.com",
       "city": "tehran",
       "education": {
-        "degree": "test",
-        "field": "test1"
+        "degree": "bachelor",
+        "field": "biology"
       },
       "skills": [
         {
-          "name": "test",
-          "level": "test1",
-          "score": 70
+          "name": "java",
+          "level": "mid",
+          "score": 96
         }
       ]
     },
     {
       "id": 2,
-      "name": "test1",
-      "email": "test1@gmail.com",
+      "name": "ali",
+      "email": "ali@gmail.com",
       "city": "tehran",
       "education": {
-        "degree": "_",
-        "field": "_"
+        "degree": "bachelor",
+        "field": "biology"
       },
       "skills": [
         {
-          "name": "test",
-          "level": "test",
-          "score": 78
+          "name": "sql",
+          "level": "mid",
+          "score": 90
         }
       ]
     }

@@ -377,13 +377,53 @@ menu_str = """
     ~ """
 
 
+def search_by_id() -> Karvand | None:
+    bootcamp = Bootcamp.check_files()
+    karvand_id_str = input("Enter Karvand ID: ")
+    if not karvand_id_str.isnumeric():
+        print("Karvand ID is invalid.")
+        return None
+    karvand_id = int(karvand_id_str)
+    return bootcamp.get_karvand_by_id(karvand_id)
+
+def search_by_skill() -> list[Karvand]:
+    bootcamp = Bootcamp.check_files()
+    skill_name = input("Enter Skill Name: ").strip().lower()
+    ret_karvands = []
+    for karvand in bootcamp.karvands:
+        for skill in karvand.skills:
+            if skill_name in skill.name.lower():
+                ret_karvands.append(karvand)
+                break
+    return ret_karvands
+
+
+
 def menu():
     user_choice = input(menu_str)
     match user_choice:
+
         case "1":
             add_karvand()
+
         case "2":
             print(show_all_karvand())
+
+        case "3":
+            karvand = search_by_id()
+            if karvand:
+                print(karvand)
+            else:
+                print("Karvand was not found.")
+
+        case "4":
+            karvands = search_by_skill()
+            if karvands:
+                for k in karvands:
+                    print(f"- {k.name} (ID: {k.karvand_id})")
+            else:
+                print("Any karvand was not found.")
+
         case "8":
             print("Goodbye!")
             exit()
