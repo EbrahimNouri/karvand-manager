@@ -1,8 +1,8 @@
 import json
 import os
 
-bootcamp_path = "./data/karvands.json"
-report_path = "./data/report.json"
+bootcamp_path = "data/karvands.json"
+report_path = "data/report.json"
 bootcamp_title = "AI BOOTCAMP 145"
 bootcamp_year = 2026
 
@@ -305,5 +305,93 @@ class Bootcamp:
         return Bootcamp.check_files()
 
 
+def get_education_from_input() -> Education:
+    degree = input("Enter degree: ")
+    field = input("Enter field: ")
+    return Education(degree, field)
+
+
+def get_score_from_input() -> int | None:
+    while True:
+        score = input("Enter score skill: ")
+        if not score.isnumeric():
+            print("Score must be numeric.")
+            continue
+        score_int = int(score)
+        if score_int < 0 or score_int > 100:
+            print("Score must be between 0 and 100.")
+            continue
+        return score_int
+
+
+def get_skills_from_input() -> list[Skill]:
+    skills = []
+    while True:
+        is_continue = input("For exit of add skill (exit) or press (Enter): ")
+        if is_continue.strip().lower() == "exit":
+            break
+        name = input("Enter name skill: ")
+        level = input("Enter level skill: ")
+        score = get_score_from_input()
+        skills.append(Skill(name, level, score))
+    return skills
+
+
+def generate_karvand_id() -> int:
+    try:
+        return Bootcamp.load().get_next_id()
+    except (FileNotFoundError, json.JSONDecodeError):
+        return 1
+
+
+def get_karvand_from_input() -> Karvand:
+    name = input("Enter Karvand Name: ")
+    email = input("Enter Karvand Email: ")
+    city = input("Enter Karvand City: ")
+    education = get_education_from_input()
+    skills = get_skills_from_input()
+    karvand_id = generate_karvand_id()
+    return Karvand(karvand_id, name, email, city, education, skills)
+
+
+def add_karvand():
+    Bootcamp.check_files()
+    karvand = get_karvand_from_input()
+    karvand.save()
+    print("Karvand was added.")
+
+
+def show_all_karvand() -> Bootcamp:
+    return Bootcamp.check_files()
+
+
+menu_str = """
+    1. Add karvand
+    2. Show all karvands
+    3. Search karvand by id
+    4. Search karvands by skill
+    5. Edit karvand
+    6. Delete karvand
+    7. Report
+    8. Exit
+    ~ """
+
+
+def menu():
+    user_choice = input(menu_str)
+    match user_choice:
+        case "1":
+            add_karvand()
+        case "2":
+            print(show_all_karvand())
+        case "8":
+            print("Goodbye!")
+            exit()
+        case _:
+            print("Invalid input.")
+
+
 if __name__ == "__main__":
     Bootcamp.check_files()
+    while True:
+        menu()

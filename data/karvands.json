@@ -1,0 +1,40 @@
+{
+  "title": "AI BOOTCAMP 145",
+  "year": 2026,
+  "karvands": [
+    {
+      "id": 1,
+      "name": "test2",
+      "email": "test2@gmail.com",
+      "city": "tehran",
+      "education": {
+        "degree": "test",
+        "field": "test1"
+      },
+      "skills": [
+        {
+          "name": "test",
+          "level": "test1",
+          "score": 70
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "test1",
+      "email": "test1@gmail.com",
+      "city": "tehran",
+      "education": {
+        "degree": "_",
+        "field": "_"
+      },
+      "skills": [
+        {
+          "name": "test",
+          "level": "test",
+          "score": 78
+        }
+      ]
+    }
+  ]
+}
